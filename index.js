@@ -9,6 +9,7 @@ console.log("Hola mundo!");
 const server = http.createServer((req, res) => {
     res.status = 200;
     res.write("<h1>Hola mundo</h1>")
+    res.end();
 });
 
 server.listen(process.env.PORT || 3000, () => {
