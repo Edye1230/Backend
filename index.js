@@ -11,6 +11,6 @@ const server = http.createServer((req, res) => {
     res.write("<h1>Hola mundo</h1>")
 });
 
-server.listen(3000, () => {
+server.listen(process.env.PORT || 3000, () => {
     console.log("Servidor prendido");
 });
