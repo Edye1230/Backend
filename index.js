@@ -1,15 +1,36 @@
-const http = require("http");
+import http from "http";
+import path from 'path';
+import fs from "fs";
+import { fileURLToPath } from 'url';
+import data from "./data.js"
 
-//import os from "os";
-
-console.log("Hola mundo!");
-
-//console.log(os.platform());
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 const server = http.createServer((req, res) => {
-    res.end("<h1>Hola mundo</h1>");
+    switch(req.url) {
+
+    case "/":
+        fs.readFile(__dirname + "/index.html", (err, data) => {
+            res.end(data)});
+        break;
+    case "/books":
+        res.setHeader("Content-Type", "application/json");
+        res.end(JSON.stringify({Libro: "Algún libro"}));
+        break;
+    case "/authors":
+        res.setHeader("Content-Type", "application/json");
+        res.end(JSON.stringify(data.authors));
+        break;
+    default:
+        res.end("Página no encontrada");
+        break;
+    }
+
+    console.log("Se solicitó la ruta:", req.url);
+
 });
 
 server.listen(process.env.PORT || 3000, () => {
-    console.log("Servidor prendido");
+    console.log("Servidor ejecutandose...")
 });
