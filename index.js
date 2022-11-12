@@ -46,6 +46,6 @@ server.get("/hola", (req, res) => {
     res.send("Hola mundo");
 })
 
-server.listen(procces.env.PORT || 3000, () => {
+server.listen(process.env.PORT || 3000, () => {
     console.log("Servidor con express ejecutado...");
 });
