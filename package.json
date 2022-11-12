@@ -18,5 +18,8 @@
   "bugs": {
     "url": "https://github.com/Edye1230/Backend/issues"
   },
-  "homepage": "https://github.com/Edye1230/Backend#readme"
+  "homepage": "https://github.com/Edye1230/Backend#readme",
+  "dependencies": {
+    "express": "^4.18.2"
+  }
 }

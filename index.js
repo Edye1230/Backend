@@ -1,4 +1,4 @@
-import http from "http";
+/*import http from "http";
 import path from 'path';
 import fs from "fs";
 import { fileURLToPath } from 'url';
@@ -33,4 +33,19 @@ const server = http.createServer((req, res) => {
 
 server.listen(process.env.PORT || 3000, () => {
     console.log("Servidor ejecutandose...")
+});*/
+
+import express from "express";
+const server = express();
+
+server.get("/", (req, res) => {
+    res.send("Bienvenido");
+})
+
+server.get("/hola", (req, res) => {
+    res.send("Hola mundo");
+})
+
+server.listen(3000, () => {
+    console.log("Servidor con express ejecutado...");
 });
