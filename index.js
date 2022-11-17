@@ -1,51 +1,19 @@
-/*import http from "http";
-import path from 'path';
-import fs from "fs";
-import { fileURLToPath } from 'url';
-import data from "./data.js"
-
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
-
-const server = http.createServer((req, res) => {
-    switch(req.url) {
-
-    case "/":
-        fs.readFile(__dirname + "/index.html", (err, data) => {
-            res.end(data)});
-        break;
-    case "/books":
-        res.setHeader("Content-Type", "application/json");
-        res.end(JSON.stringify({Libro: "Algún libro"}));
-        break;
-    case "/authors":
-        res.setHeader("Content-Type", "application/json");
-        res.end(JSON.stringify(data.authors));
-        break;
-    default:
-        res.end("Página no encontrada");
-        break;
-    }
-
-    console.log("Se solicitó la ruta:", req.url);
-
-});
-
-server.listen(process.env.PORT || 3000, () => {
-    console.log("Servidor ejecutandose...")
-});*/
-
+import { sequelize } from "./db.js"
 import express from "express";
-const server = express();
+import morgan from "morgan";
+import routes from "./src/routes.js"
 
-server.get("/", (req, res) => {
-    res.send("Bienvenido");
-})
+export const server = express();
 
-server.get("/hola", (req, res) => {
-    res.send("Hola mundo");
-})
+server.use("/", routes);
+server.use(morgan("tiny"));
+server.use(express.json());
+server.use(express.static("public"));
 
-server.listen(process.env.PORT || 3000, () => {
-    console.log("Servidor con express ejecutado...");
+sequelize.sync({ force: true }).then(() => {
+    server.listen(process.env.PORT || 3000, () => {
+        console.log("Servidor encendido!");
+    })
 });
+
+//console.log("asdas", sequelize.models);
