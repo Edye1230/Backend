@@ -6,7 +6,7 @@ import morgan from "morgan";
 
 export const server = express();
 
-export const sequelize = new Sequelize("postgres://ttlxyvkiwhmfsh:3496ee01ae3d4a6886404336e42a3f625376a2416057ed8c145a9d712694c1a2@ec2-52-1-17-228.compute-1.amazonaws.com:5432/d25rnefv34vjs4", {
+export const sequelize = new Sequelize(process.env.DATABASE_URL || 'postgres://postgres:admin@localhost/pokemon2', {
     logging: false,
 });
 
@@ -27,4 +27,4 @@ sequelize.sync({ force: true }).then(() => {
 });
 
 console.log("index.js");
-process.env ? console.log(process.env) : console.log("No hay process");
+//process.env ? console.log(process.env) : console.log("No hay");;
