@@ -1,13 +1,23 @@
 import Sequelize from "sequelize";
 import express from "express";
 import morgan from "morgan";
+//const { DATABASE_URL } = process.env;
+
 //import { sequelize } from "./db.js"
 //import routes from "./src/routes.js"
 
 export const server = express();
 
-export const sequelize = new Sequelize(process.env.DATABASE_URL || 'postgres://postgres:admin@localhost/pokemon2', {
+export const sequelize = new Sequelize(process.env.DATABASE_URL, {
     logging: false,
+    dialectOptions: {
+        ssl: {
+          require: true,
+          rejectUnauthorized: false,
+        },
+        keepAlive: true,
+      },
+      ssl: true,
 });
 
 import("./src/models/Pokemon.js");
@@ -27,4 +37,3 @@ sequelize.sync({ force: true }).then(() => {
 });
 
 console.log("index.js");
-//process.env ? console.log(process.env) : console.log("No hay");;
