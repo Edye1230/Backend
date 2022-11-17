@@ -6,7 +6,7 @@ import morgan from "morgan";
 
 export const server = express();
 
-export const sequelize = new Sequelize('postgres://postgres:admin@localhost/pokemon2', {
+export const sequelize = new Sequelize(process.env.DATABASEURL || 'postgres://postgres:admin@localhost/pokemon2', {
     logging: false,
 });
 
