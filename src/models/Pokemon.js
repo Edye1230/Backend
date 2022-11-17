@@ -1,7 +1,5 @@
 import { DataTypes } from "sequelize";
-import { sequelize } from "../../db.js";
-//import { Type } from "./Type.js";
-//import { Pokemon_Type } from "./Pokemon_Type.js";
+import { sequelize } from "../../index.js";
 
 export const Pokemon = sequelize.define("pokemon", {
     id: {
@@ -65,4 +63,4 @@ export const Pokemon = sequelize.define("pokemon", {
     }
 );
 
-console.log("poikecito", Pokemon);
+console.log("model_poke");

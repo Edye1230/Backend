@@ -1,5 +1,4 @@
-import Sequelize from "sequelize";
-
+/*import Sequelize from "sequelize";
 
 export const sequelize = new Sequelize('postgres://postgres:admin@localhost/pokemon2', {
     //logging: console.log,                  // Default, displays the first parameter of the log function call
@@ -10,3 +9,12 @@ export const sequelize = new Sequelize('postgres://postgres:admin@localhost/poke
 });
 //import { Pokemon } from "./src/models/Pokemon.js";
 //import { Type } from "./src/models/Type.js";
+//console.log(sequelize);
+
+if(sequelize) {
+    import("./src/models/Pokemon.js");
+    import("./src/models/Type.js");
+    import("./src/models/Pokemon_Type.js");
+};
+
+console.log("db.js");*/

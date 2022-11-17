@@ -1,11 +1,21 @@
-import { sequelize } from "./db.js"
+import Sequelize from "sequelize";
 import express from "express";
 import morgan from "morgan";
-import routes from "./src/routes.js"
+//import { sequelize } from "./db.js"
+//import routes from "./src/routes.js"
 
 export const server = express();
 
-server.use("/", routes);
+export const sequelize = new Sequelize('postgres://postgres:admin@localhost/pokemon2', {
+    logging: false,
+});
+
+import("./src/models/Pokemon.js");
+import("./src/models/Type.js");
+import("./src/models/Pokemon_Type.js");
+import("./src/routes.js");
+
+//server.use("/", routes);
 server.use(morgan("tiny"));
 server.use(express.json());
 server.use(express.static("public"));
@@ -16,4 +26,4 @@ sequelize.sync({ force: true }).then(() => {
     })
 });
 
-//console.log("asdas", sequelize.models);
+console.log("index.js");

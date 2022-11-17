@@ -20,6 +20,7 @@
   },
   "homepage": "https://github.com/Edye1230/Backend#readme",
   "dependencies": {
+    "axios": "^1.1.3",
     "express": "^4.18.2",
     "morgan": "^1.10.0",
     "pg": "^8.8.0",
