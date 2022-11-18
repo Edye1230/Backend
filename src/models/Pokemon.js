@@ -64,3 +64,6 @@ export const Pokemon = sequelize.define("pokemon", {
 );
 
 console.log("model_poke");
+
+//Pokemon.belongsToMany(Type, { through: Pokemon_Type });
+//Type.belongsToMany(Pokemon, { through: Pokemon_Type });

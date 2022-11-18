@@ -1,3 +1,4 @@
+import "../models/Pokemon_Type.js";
 import { Pokemon } from "../models/Pokemon.js"
 import { Type } from "../models/Type.js"
 import axios from "axios";
@@ -5,7 +6,7 @@ import axios from "axios";
 export async function getPokemons(req, res) {
 
     const respApi = await axios.get('https://pokeapi.co/api/v2/pokemon?limit=30');
-    /*let urlData = [];
+    let urlData = [];
 
     for (let i = 0; i < respApi.data.results.length; i++) {
         let respUrl = await axios.get(respApi.data.results[i].url)
@@ -26,10 +27,11 @@ export async function getPokemons(req, res) {
 
     });
 
-    const apiDbResult = urlData.concat(dbResult);*/
-    //console.log(respApi);
-    res.json(respApi.data)
+    const apiDbResult = urlData.concat(dbResult);
+    res.json(apiDbResult)
 
 };
+
+//export async function 
 
 console.log("poke.control.js");
