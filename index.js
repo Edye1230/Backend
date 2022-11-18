@@ -9,9 +9,12 @@ import morgan from "morgan";
 export const server = express();
 //'postgres://postgres:admin@localhost/pokemon2'
 export const sequelize = new Sequelize(process.env.DATABASE_URL, {
-    ssl: {
-        rejectUnauthorized: false,
-    },
+    dialectOptions: {
+        ssl: {
+          rejectUnauthorized: false,
+        },
+      },
+      ssl: true,
 });
 
 /*export const sequelize = new Sequelize('postgres://postgres:admin@localhost/pokemon2', {
