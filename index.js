@@ -7,18 +7,16 @@ import morgan from "morgan";
 //import routes from "./src/routes.js"
 
 export const server = express();
-
+//'postgres://postgres:admin@localhost/pokemon2'
 export const sequelize = new Sequelize(process.env.DATABASE_URL, {
-    logging: false,
-    dialectOptions: {
-        ssl: {
-          require: true,
-          rejectUnauthorized: false,
-        },
-        keepAlive: true,
-      },
-      ssl: true,
+    ssl: {
+        rejectUnauthorized: false,
+    },
 });
+
+/*export const sequelize = new Sequelize('postgres://postgres:admin@localhost/pokemon2', {
+    logging: false,
+});*/
 
 import("./src/models/Pokemon.js");
 import("./src/models/Type.js");
