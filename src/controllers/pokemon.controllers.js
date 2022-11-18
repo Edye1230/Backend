@@ -28,7 +28,7 @@ export async function getPokemons(req, res) {
     });
 
     const apiDbResult = urlData.concat(dbResult);
-    res.json(apiDbResult)
+    res.send(apiDbResult)
 
 };
 

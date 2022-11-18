@@ -15,7 +15,7 @@ server.use((req, res, next) => {
   server.use("/", routes);
   server.use(morgan("tiny"));
   server.use(express.json());
-  server.use(express.static("public"));
+  //server.use(express.static("public"));
 
 export default server;
 
