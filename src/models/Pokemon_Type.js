@@ -1,4 +1,4 @@
-import { sequelize } from "../../index.js";
+import sequelize from "../../db.js";
 //import { Pokemon } from "./Pokemon.js";
 //import { Type } from "./Type.js";
 
