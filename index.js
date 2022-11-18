@@ -10,12 +10,22 @@ export const server = express();
 //'postgres://postgres:admin@localhost/pokemon2'
 export const sequelize = new Sequelize(process.env.DATABASE_URL, {
     dialectOptions: {
-        ssl: {
-          rejectUnauthorized: false,
-        },
-      },
-      ssl: true,
-});
+      ssl: {
+        require: true,
+        rejectUnauthorized: false
+      }
+    }
+  }
+);
+
+sequelize
+  .authenticate()
+  .then(() => {
+    console.log('Connection has been established successfully.');
+  })
+  .catch(err => {
+    console.error('Unable to connect to the database:', err);
+  });
 
 /*export const sequelize = new Sequelize('postgres://postgres:admin@localhost/pokemon2', {
     logging: false,
