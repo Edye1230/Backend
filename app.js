@@ -4,6 +4,9 @@ import routes from "./src/routes.js"
 
 const server = express();
 
+server.use(morgan("dev"));
+server.use(express.json());
+
 server.use((req, res, next) => {
     res.header("Access-Control-Allow-Origin", "*");
     res.header("Access-Control-Allow-Credentials", "true");
@@ -12,10 +15,7 @@ server.use((req, res, next) => {
     next();
   });
 
-  server.use("/", routes);
-  server.use(morgan("tiny"));
-  server.use(express.json());
-  //server.use(express.static("public"));
+server.use("/", routes);
 
 export default server;
 
