@@ -125,46 +125,33 @@ export const getPokemonByName = async (req, res) => {
 
 export const postPokemon = async (req, res) => {
 
-    let { name } = req.params;
-    let apiResult = [];
-    
-    let dbResult = await Pokemon.findAll({
-        include: Type,
-        where: { name: { [Op.iLike]: `%${name}%` } }
-    });
-
-    let dbResultFormated = await dbResult.map((i) => {
-        return ({ 
-            id: i.id,
-            name: i.name, 
-            types: i.types.map(i => i.name),
-            stats_attack: i.stats_attack,
-            stats_speed: i.stats_speed,
-            img_url: i.img_url
-        })
-    });
-
     try{
-
-        const resp = await axios.get(`https://pokeapi.co/api/v2/pokemon/${name}`);
+        let { name, stats_hp, stats_attack, stats_defense, stats_speed, height, weight, types, img_url } = req.body;
     
-            apiResult = [resp.data].map((i) => {
-                return ({ 
-                    id: i.id,
-                    name: i.name, 
-                    types: i.types.map(i => i.type.name),
-                    stats_attack: i.stats[1].base_stat,
-                    stats_speed: i.stats[5].base_stat,
-                    img_url: i.sprites.versions["generation-v"]["black-white"].animated.front_default
-                })
-            });
-            
-        } catch(error) { return res.json(dbResultFormated) }
-
-
-    let apiDbResult = dbResultFormated.concat(apiResult);
-    res.send(apiDbResult)
-
+        let newPokemon = await Pokemon.create({
+            name: name, 
+            stats_hp: stats_hp, 
+            stats_attack: stats_attack, 
+            stats_defense: stats_defense, 
+            stats_speed: stats_speed, 
+            height: height, 
+            weight: weight, 
+            img_url: img_url
+        });
+    
+        const matchingTypes = await Type.findAll({
+            where: {
+                name: {
+                    [Op.in]: types,
+                },
+            },
+        });
+        
+        await newPokemon.setTypes(matchingTypes);
+    
+        res.send("Recibido correctamente");
+        
+        } catch(err) { return console.log(err) }
 };
 
 console.log("poke.control.js");
