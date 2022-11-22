@@ -14,7 +14,7 @@ const sequelize =
             }
           }
     })
-    : new Sequelize(process.env.DATABASE_URL, {
+    : new Sequelize("postgres://postgres:admin@localhost/pokemon2", {
           logging: false,
         });
         
