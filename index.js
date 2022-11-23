@@ -2,7 +2,6 @@ import server from "./app.js"
 import sequelize from "./db.js"
 import axios from "axios";
 import { Type } from "./src/models/Type.js";
-//import { postear } from "./Pruebas/mod3.js"
 
 const index = async () => {
     await sequelize.sync({ force: true });
@@ -10,7 +9,6 @@ const index = async () => {
     await res.data.results.forEach((i) => {
         Type.findOrCreate({ where: { name: i.name } });
     });
-    //postear()
 
     server.listen(process.env.PORT || 3001, () => {
         console.log("Servidor encendido!")})
