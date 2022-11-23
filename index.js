@@ -2,6 +2,7 @@ import server from "./app.js"
 import sequelize from "./db.js"
 import axios from "axios";
 import { Type } from "./src/models/Type.js";
+import { postear } from "./Pruebas/mod3.js"
 
 const index = async () => {
     await sequelize.sync({ force: true });
@@ -15,6 +16,6 @@ const index = async () => {
 
 };
 
-index();
+index().then(postear);
 
 console.log("index.js");
