@@ -1,7 +1,7 @@
 import axios from "axios";
 
 export const postear = () => {
-  axios.post(`http://localhost:3001/pokemon`, {
+  axios.post(`https://backend-edye.herokuapp.com/pokemon`, {
     name: "activador",
     stats_hp: 20,
     stats_attack: 20,
