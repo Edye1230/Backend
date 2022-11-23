@@ -8,13 +8,4 @@ export const Pokemon_Type = sequelize.define("Pokemon_Type", {}, { timestamps: f
 Pokemon.belongsToMany(Type, { through: Pokemon_Type });
 Type.belongsToMany(Pokemon, { through: Pokemon_Type });
 
-//CREANDO LOS TIPOS
-async () => {
-    await axios.get('https://pokeapi.co/api/v2/type').then(res => {
-        const types = res.data.results;
-        types.forEach((i) => {
-            Type.findOrCreate({where: { name: i.name }});
-        });
-    });
-}
-  console.log("model_poke_type");
+console.log("model_poke_type");
