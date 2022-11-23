@@ -10,12 +10,13 @@ const index = async () => {
     await res.data.results.forEach((i) => {
         Type.findOrCreate({ where: { name: i.name } });
     });
-    
+    postear()
+
     server.listen(process.env.PORT || 3001, () => {
         console.log("Servidor encendido!")})
 
 };
 
-index().then(postear);
+index();
 
 console.log("index.js");
