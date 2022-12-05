@@ -149,7 +149,7 @@ export const postPokemon = async (req, res) => {
         
         await newPokemon.setTypes(matchingTypes);
     
-        res.send("Recibido correctamente");
+        res.send("agregado correctamente");
         
         } catch(err) { return console.log(err) }
 };
