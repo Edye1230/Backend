@@ -5,7 +5,7 @@ dotenv.config();
 
 const sequelize =
   process.env.NODE_ENV === "production"
-    ? new Sequelize("postgres://ttlxyvkiwhmfsh:3496ee01ae3d4a6886404336e42a3f625376a2416057ed8c145a9d712694c1a2@ec2-52-1-17-228.compute-1.amazonaws.com:5432/d25rnefv34vjs4", {
+    ? new Sequelize("postgres://lyfppwwh:DI24Lv6XqXueaRemcxoGsPEubqjLuqhn@babar.db.elephantsql.com/lyfppwwh", {
         //logging: false,
         dialectOptions: {
             ssl: {
@@ -14,7 +14,7 @@ const sequelize =
             }
           }
     })
-    : new Sequelize("postgres://ttlxyvkiwhmfsh:3496ee01ae3d4a6886404336e42a3f625376a2416057ed8c145a9d712694c1a2@ec2-52-1-17-228.compute-1.amazonaws.com:5432/d25rnefv34vjs4", {
+    : new Sequelize("postgres://lyfppwwh:DI24Lv6XqXueaRemcxoGsPEubqjLuqhn@babar.db.elephantsql.com/lyfppwwh", {
       //logging: false,
       dialectOptions: {
           ssl: {
